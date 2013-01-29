@@ -56,7 +56,8 @@
 \defaultfontfeatures{Mapping=tex-text}
 \setmainfont[Mapping=tex-text, Color=textcolor]{Helvetica Neue Light}
 
-\setmathfont{XITS Math}
+%\setmathfont{XITS Math}
+\setmathfont{xits-math.otf}
 
 %%%%%%%%%%
 % Header %
@@ -266,7 +267,8 @@
 \newcommand{\printbibsection}[2]{
   \begin{refsection}
     \nocite{*}
-    \printbibliography[sorting=chronological, type={#1}, title={#2}, heading=subbibliography]
+    %\printbibliography[sorting=chronological, type={#1}, title={#2}, heading=subbibliography]
+    \printbibliography[type={#1}, title={#2}, heading=subbibliography]
   \end{refsection}
 }
 
