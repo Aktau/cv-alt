@@ -62,19 +62,32 @@ speed of development, reliability and performance.
     {Engineering Sciences, specialization in Computer Science}
 \end{entrylist}
 
-\section{experience}
+\section{experience (part 1)}
 
 \begin{entrylist}
   \entry
-    {10/12-01/13}
-    {Freelance, Kruibeke-Heidelberg}
+    {10/12-07/13}
+    {Freelance, Antwerp-Heidelberg}
     {Freelance consultant}
-    {\emph{Development of large and small software systems, usually featuring a client-server architecture. Focus on web technologies}}
+    {\emph{Development of large and small software systems, usually featuring a client-server architecture. Focus on web technologies. \\\\ My latest assignment was a solo project for an Antwerp-based media company aiming to develop a digital signage system (advertisement and media) that allowed them to have their high-definition media (and that of their clients) streamed to remote players everywhere -- in stores, at events, in parking places, ... In the project description section there is a more detailed explanation of the technical details of the project. \\\\ As this was a solo project, I performed all the tasks normally associated with a large-scale software project, from customer relations to architect, developer and even sysadmin. This gave me a lot of experience with topics that I wouldn't have come into contact with if I had been working as part of a larger team such as my earlier projects. It allowed me to see many things with a fresh perspective and come up with good ways to integrate the different roles and responsibilities and streamline the process in future projects, whether they be small and nimble or vast and long-lasting.
+    }}
+\end{entrylist}
+
+\clearpage
+
+\section{experience (part 2)}
+
+\begin{entrylist}
   \entry
     {09/11-09/12}
     {Capgemini, Diegem}
     {Consultant}
     {\emph{Development and maintenance of a large data warehouse for a chemical industry company with Oracle technology.}}
+  \entry
+    {09/10--07/11}
+    {Department of Computer Science, Katholieke Universiteit Leuven, Leuven}
+    {Student}
+    {\emph{In this year I worked on my thesis project. The objective was to construct various tools with the goal of aiding and optimizing the workflow of archaeologists trying to restore frescos all over the world. Primarily this means digitally reconstructing the fresco with the aid of specific algorithms, and helping the operator judge the results whilst allowing him/her to suggest new possibilities.}}
   \entry
     {08/10-09/10}
     {Department of Physics, Katholieke Universiteit Leuven, Leuven}
@@ -92,18 +105,6 @@ speed of development, reliability and performance.
     {\emph{Pilot project: construction of an educational game for children teaching them about evolution.}}
 \end{entrylist}
 
-\section{thesis}
-
-\begin{entrylist}
-  \entry
-    {2010--2011}
-    {Reconstructing ancient frescos}
-    {Katholieke Universiteit Leuven}
-    {The objective of this project was to construct various tools with the goal of aiding and optimizing the workflow of archaeologists trying to restore frescos all over the world. Primarily this means digitally reconstructing the fresco with the aid of specific algorithms, and helping the operator judge the results whilst allowing him/her to suggest new possibilities.}
-\end{entrylist}
-
-\clearpage
-
 \section{activities}
 
 \begin{entrylist}
@@ -113,6 +114,42 @@ speed of development, reliability and performance.
     {Antwerp, Heidelberg, Barcelona}
     {Travel, reading, skiing, soccer, fitness, festivals, language learning}
 \end{entrylist}
+
+\section{project descriptions}
+
+This section provides a more technical view of the tasks performed on certain projects, for those interested.
+
+\begin{entrylist}
+  \entry
+    {10/12-07/13}
+    {Digital signage player}
+    {Antwerp-Heidelberg}
+    {\emph{
+    A solo project aiming to develop a digital signage system (i.e.: advertisement and media on customer's premises) that lets many media player units connect to a central server. The server is responsible for the worldwide distribution of content (videos, presentations, weather, news, ...) in a secure and efficient fashion, and the client is responsible for playing this content and reporting on its activities. Advertisers can pay to advertise on this network, for example by putting content and presentations on player units in their vicinity to attract customers. As the advertiser pays for time on the player units, it is necessary that the unit be as stable as possible and recover from any error it may encounter. \\\\
+    On the technical side, I researched and used a lot of (previously unfamiliar) technologies that were a good match for the project. A sampling: \\
+    \begin{description}
+        \item[puppet] for deploying both the server and clients, making everything reproducible and maintainable. New player boxes are deployed by popping in one USB stick and afterwards running one command, further installation is hands-off. This makes it fast and easy to setup new units and deliver them to costumers on time.
+        \item[linux (debian)] both the server and client run debian linux (wheezy), and extensively use both standard and custom packages for provisioning, making upgrades and bug-fixes on both all and specific units a trivial matter. A custom debian repository runs on the server.
+        \item[C] to display presentations (flash or HTML), RSS feeds, weather and support easily editable HTML templates for multiple playlists, it was advantageous to use a web browser (chromium) as the main viewport. However, no web browser for linux supported hardware playback of high-definition content. So a browser plugin was written in C that interfaces the browser with a video player that can take advantage of the low-cost hardware and play HD content without breaking a sweat.
+        \item[nginx] both the server and the clients are running instances of nginx to coordinate the various running services (media download, video playing, et cetera.
+        \item[node.js, websockets, server-sent events] many customer locations have very locked-down networks, one of the few ways to evade this in a general way and provide the player units with the ability to report on the items that have been played, is to use HTTP over SSL (HTTPS) as a transport protocol. The reason for this is, is that it is common for employees to visit HTTPS websites (such as gmail) from inside the network. This technique has the added advantage of being secure against eavesdroppers and man-in-the-middle (MITM) attacks. When possible, this remote control system will use WebSockets, as it is more efficient for full-duplex communication that vanilla HTTP. However if that fails the system will fallback to server-sent events, which is indistinguishable from plain HTTP to any router/proxy.
+        \item[redis] many player units are sending information and reconnecting all the time for various reasons, which is why the datastore for managing this information needs to be very efficient for both writing and reading. Redis -- a popular in-memory database -- was chosen for this task and has proven to perform admirably.
+        \item[mongodb] the player units themselves keep all information about the playlists (duration, type, file location, ...) in a mongodb instance.
+        \item[PHP] large parts of the digital signage application were written in PHP, which has proven itself as a web technology that allows for very rapid development of an application that can run for a very long time with decent performance.
+        \item[Javascript, CSS] except for the videos, some items that the customers want shown are for example RSS feeds and weather reports. To provide for smooth transitions and a pleasing appearance the player used a combination of javascript and CSS.
+    \end{description}
+    }}
+\end{entrylist}
+
+% \section{thesis}
+
+% \begin{entrylist}
+%   \entry
+%     {2010--2011}
+%     {Reconstructing ancient frescos}
+%     {Katholieke Universiteit Leuven}
+%     {The objective of this project was to construct various tools with the goal of aiding and optimizing the workflow of archaeologists trying to restore frescos all over the world. Primarily this means digitally reconstructing the fresco with the aid of specific algorithms, and helping the operator judge the results whilst allowing him/her to suggest new possibilities.}
+% \end{entrylist}
 
 % \section{publications}
 

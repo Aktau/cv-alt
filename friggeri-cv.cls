@@ -102,6 +102,11 @@
         red\or%
         orange\or%
         green\or%
+        purple\or
+        blue\or
+        red\or%
+        orange\or%
+        green\or%
         purple\else%
         headercolor\fi%
     } #1#2#3%
